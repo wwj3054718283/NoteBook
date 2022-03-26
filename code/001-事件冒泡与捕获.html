@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #parent {
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+        }
+
+        #child {
+            width: 100px;
+            height: 100px;
+            background-color: rgb(92, 194, 123);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="parent">
+        父元素
+        <div id="child">
+            子元素
+        </div>
+    </div>
+    <script>
+        // 事件冒泡
+        let parent = document.querySelector('#parent')
+        let child = document.querySelector('#child')
+        document.body.addEventListener('click', (e) => {
+            console.log('click---------->body');
+        })
+        parent.addEventListener('click', (e) => {
+            console.log('click---------->parent事件传播');
+        })
+        parent.addEventListener("click", function (e) {
+            console.log("click---------->parent事件捕获");
+        }, true);
+        child.addEventListener('click', (e) => {
+            console.log('click---------->child');
+            // 阻止事件冒泡
+            // e.stopPropagation();
+        })
+    </script>
+</body>
+
+</html>
