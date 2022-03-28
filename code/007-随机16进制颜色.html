@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function makeColor() {
+            function Random(max, min) {
+                return Math.round(Math.random() * (max - min)) + min
+            }
+            let hexStr = '#'
+            let arrColor = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'a', 'b', 'c', 'd', 'e', 'f']
+            for (let i = 0; i < 6; i++) {
+                let ranI = Random(15, 0)
+                let ranCol = arrColor[ranI]
+                hexStr += ranCol
+            }
+            return hexStr
+        }
+        let timer = setInterval(() => {
+            document.body.style.backgroundColor = makeColor()
+            console.log(makeColor());
+        }, 1000);
+        setTimeout(() => {
+            alert('不想丸辣')
+            clearInterval(timer)
+        }, 10000);
+    </script>
+</body>
+
+</html>
